@@ -5,7 +5,7 @@ import { CssBaseline } from '@material-ui/core';
 import { commerce } from './lib/commerce';
 const App = () => {
 
-  const [products, setProducts] = useState({});
+  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([])
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
