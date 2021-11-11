@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Products, Navbar, Cart ,Checkout} from './components';
 import { CssBaseline } from '@material-ui/core';
 import { commerce } from './lib/commerce';
+
 const App = () => {
 
   const [products, setProducts] = useState([]);
@@ -50,13 +51,15 @@ const App = () => {
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div style={{ display: 'flex' }}>
       <CssBaseline />
         <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
         <Switch>
           <Route exact path='/'>
+            <div>
             <Products products={products}  onAddToCart={handleAddToCart}  />
+            </div>
           </Route>
           <Route exact path="/cart"> 
           <Cart cart={ cart }  onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
